@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/Main/MainContainer.js"],"names":["MainContainer"],"mappings":"6FAAA,gCAMeA,UAJO,WACpB,OAAO","file":"component---src-pages-main-main-container-js-86075f55d41d0bb1bb93.js","sourcesContent":["import React from 'react';\n\nconst MainContainer = () => {\n  return <div></div>;\n};\n\nexport default MainContainer;\n"],"sourceRoot":""}
