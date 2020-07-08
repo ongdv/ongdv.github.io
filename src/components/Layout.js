@@ -1,72 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
-import Header from './Header';
-import Footer from './Footer';
-import GlobalStyles from '../GlobalStyles';
-import * as Mixins from '../Mixins';
+/**
+ * Layout component that queries for data
+ * with Gatsby's useStaticQuery component
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
 
-export const Content = styled.div`
-  ${Mixins.contentMixin}
-`;
+import React from "react"
+import PropTypes from "prop-types"
+import { useStaticQuery, graphql } from "gatsby"
 
-export const LayoutWrapper = styled.div`
-  position: relative;
-`;
+import Header from "./header"
+import "./layout.css"
 
-const Layout = ({
-  children,
-  theme,
-  bigFooter,
-  mediumFooter,
-  openContactPopup
-  
-}) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
         }
       }
-    `}
-    render={data => (
-      <>
-        <GlobalStyles />
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            {
-              name: 'description',
-              content:
-                'Portfolio built using Gatsby and React'
-            },
-            { name: 'keywords', content: 'portfolio' }
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        <Header theme={theme} openContactPopup={openContactPopup} />
-        <LayoutWrapper>{children}</LayoutWrapper>
-        <Footer
-          big={bigFooter}
-          medium={mediumFooter}
-          openContactPopup={openContactPopup}
-        />
-      </>
-    )}
-  />
-);
+    }
+  `)
+
+  return (
+    <>
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `0 1.0875rem 1.45rem`,
+        }}
+      >
+        <main>{children}</main>
+        <footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        </footer>
+      </div>
+    </>
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  theme: PropTypes.string,
-  bigFooter: PropTypes.bool,
-  mediumFooter: PropTypes.bool
-};
+}
 
-export default Layout;
+export default Layout
