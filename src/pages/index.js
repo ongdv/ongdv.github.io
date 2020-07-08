@@ -146,10 +146,12 @@ class Homepage extends React.Component {
           <AboveFold>
             <Img fluid={data.avatarHomepage.childImageSharp.fluid} alt="Name Surname" className="avatar" />
             <t.H1 primary align="center">
-              Name Surname
+              오경우
             </t.H1>
-            <t.LargeP align="center" max45>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <t.LargeP align="left" max45>
+              동서대학교 컴퓨터공학 전공 (2013.02 ~ 2020.02)
+              <br />
+              주식회사 프레시앤텍 (2019.04 ~ 2020.06.30)
             </t.LargeP>
             <HireMe large onClick={this.openContactPopup} book>
               Hire me
@@ -157,88 +159,83 @@ class Homepage extends React.Component {
           </AboveFold>
           <Content>
             <t.H2 primary align="center" bold>
-              Lorem ipsum
+              사진과 개발을 사랑하는 개발자.
             </t.H2>
             <t.P align="center" max70 className="who-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              언제나 최신동향을 따라가려 노력하며, 스스로 배운 것을 주위 사람들에게 가르쳐주며 스터디하는 것을
+              좋아합니다. <br />
+              아직 스스로에게 '개발자'라는 호칭을 쓰는 것은 모자라다고 판단합니다. 당신이 저를 개발자라는 호칭이
+              적합한지 알려주세요.
             </t.P>
-            <t.H2 primary align="center" bold className="portfolio">
+            {/* <t.H2 primary align="center" bold className="portfolio">
               Portfolio
-            </t.H2>
+            </t.H2> */}
           </Content>
-          <Block>
-            <BlockContent>
-              <DivWrapper>
-                <ItemImage src={Placeholder} alt="Placeholder title" />
-              </DivWrapper>
-              <DivWrapper>
-                <t.H2 bold>Placeholder website</t.H2>
-                <t.P>Lorem ipsum</t.P>
-                <t.P>Dolor sit amet</t.P>
-                <LinkButton primary bold className="link" as="a"
-                  target="_blank"
-                  href="#">
-                  Lorem ipsum
-                </LinkButton>
-              </DivWrapper>
-            </BlockContent>
-          </Block>
-          <Block>
-            <BlockContent>
-              <DivWrapper>
-                <t.H2 bold>Placeholder website</t.H2>
-                <t.P>Lorem ipsum</t.P>
-                <t.P>Dolor sit amet</t.P>
-                <LinkButton primary bold className="link" as="a"
-                  target="_blank"
-                  href="#">
-                  Lorem ipsum
-                </LinkButton>
-              </DivWrapper>
-              <DivWrapper>
-                <ItemImage src={Placeholder} alt="Placeholder title" />
-              </DivWrapper>
-            </BlockContent>
-          </Block>
-          <Block>
-            <BlockContent>
-              <DivWrapper>
-                <ItemImage src={Placeholder} alt="Placeholder title" />
-              </DivWrapper>
-              <DivWrapper>
-                <t.H2 bold>Placeholder website</t.H2>
-                <t.P>Lorem ipsum</t.P>
-                <t.P>Dolor sit amet</t.P>
-                <LinkButton primary bold className="link" as="a"
-                  target="_blank"
-                  href="#">
-                  Lorem ipsum
-                </LinkButton>
-              </DivWrapper>
-            </BlockContent>
-          </Block>
-          <Block>
-            <BlockContent>
-              <DivWrapper>
-                <t.H2 bold>Placeholder website</t.H2>
-                <t.P>Lorem ipsum</t.P>
-                <t.P>Dolor sit amet</t.P>
-                <LinkButton primary bold className="link" as="a"
-                  target="_blank"
-                  href="#">
-                  Lorem ipsum
-                </LinkButton>
-              </DivWrapper>
-              <DivWrapper>
-                <ItemImage src={Placeholder} alt="Placeholder title" />
-              </DivWrapper>
-            </BlockContent>
-          </Block>
+          {/* <>
+            <Block>
+              <BlockContent>
+                <DivWrapper>
+                  <ItemImage src={Placeholder} alt="Placeholder title" />
+                </DivWrapper>
+                <DivWrapper>
+                  <t.H2 bold>Placeholder website</t.H2>
+                  <t.P>Lorem ipsum</t.P>
+                  <t.P>Dolor sit amet</t.P>
+                  <LinkButton primary bold className="link" as="a" target="_blank" href="#">
+                    Lorem ipsum
+                  </LinkButton>
+                </DivWrapper>
+              </BlockContent>
+            </Block>
+            <Block>
+              <BlockContent>
+                <DivWrapper>
+                  <t.H2 bold>Placeholder website</t.H2>
+                  <t.P>Lorem ipsum</t.P>
+                  <t.P>Dolor sit amet</t.P>
+                  <LinkButton primary bold className="link" as="a" target="_blank" href="#">
+                    Lorem ipsum
+                  </LinkButton>
+                </DivWrapper>
+                <DivWrapper>
+                  <ItemImage src={Placeholder} alt="Placeholder title" />
+                </DivWrapper>
+              </BlockContent>
+            </Block>
+            <Block>
+              <BlockContent>
+                <DivWrapper>
+                  <ItemImage src={Placeholder} alt="Placeholder title" />
+                </DivWrapper>
+                <DivWrapper>
+                  <t.H2 bold>Placeholder website</t.H2>
+                  <t.P>Lorem ipsum</t.P>
+                  <t.P>Dolor sit amet</t.P>
+                  <LinkButton primary bold className="link" as="a" target="_blank" href="#">
+                    Lorem ipsum
+                  </LinkButton>
+                </DivWrapper>
+              </BlockContent>
+            </Block>
+            <Block>
+              <BlockContent>
+                <DivWrapper>
+                  <t.H2 bold>Placeholder website</t.H2>
+                  <t.P>Lorem ipsum</t.P>
+                  <t.P>Dolor sit amet</t.P>
+                  <LinkButton primary bold className="link" as="a" target="_blank" href="#">
+                    Lorem ipsum
+                  </LinkButton>
+                </DivWrapper>
+                <DivWrapper>
+                  <ItemImage src={Placeholder} alt="Placeholder title" />
+                </DivWrapper>
+              </BlockContent>
+            </Block>
+          </> */}
           <WorkWithMe>
-            <t.H1 green>Get in touch with me</t.H1>
-            <t.LargeP>
-              Fancy working with me? Contact me for more info!{' '}
-            </t.LargeP>
+            <t.H1 green>Contact</t.H1>
+            <t.LargeP>If you contact me?</t.LargeP>
             <HireMe onClick={this.openContactPopup} book>
               Contact me
             </HireMe>

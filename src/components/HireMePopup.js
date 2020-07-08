@@ -1,12 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import { lighten, darken } from 'polished';
-import * as t from '../Typography';
-import Colors from '../Colors';
-import LN from '../images/ln.png';
-import Close from '../images/close-popup-grey.png';
-import { media } from '../MediaQueries';
-import Helmet from 'react-helmet';
+import React from "react"
+import styled from "styled-components"
+import { lighten, darken } from "polished"
+import * as t from "../Typography"
+import Colors from "../Colors"
+import rocket from "../images/rocket.png"
+import insta from "../images/instagram.jpeg"
+import Close from "../images/close-popup-grey.png"
+import { media } from "../MediaQueries"
+import Helmet from "react-helmet"
 
 const HireMePopupWrapper = styled.div`
   position: fixed;
@@ -27,12 +28,12 @@ const HireMePopupWrapper = styled.div`
     flex-direction: column;
     overflow-y: auto;
   `};
-`;
+`
 
 const Link = styled.a`
   font-size: 18px;
   padding: 16px 50px;
-`;
+`
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ const ContentWrapper = styled.div`
     padding: 0;
     margin: 0 30px;
   `};
-`;
+`
 
 const Burger = styled.div`
   width: 22px;
@@ -60,7 +61,7 @@ const Burger = styled.div`
   color: ${props => props.scrolled && Colors.darkest};
   &:hover {
     ${props =>
-      props.scrolled || props.theme === 'white'
+      props.scrolled || props.theme === "white"
         ? lighten(0.3, Colors.darkest)
         : darken(0.1, Colors.white)};
     cursor: pointer;
@@ -70,16 +71,16 @@ const Burger = styled.div`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 class HireMePopup extends React.Component {
   closePopup = e => {
-    this.props.handleClose(false);
-  };
+    this.props.handleClose(false)
+  }
 
   render() {
-    const { open } = this.props;
-    const overflow = open ? 'hidden' : 'auto';
+    const { open } = this.props
+    const overflow = open ? "hidden" : "auto"
     return (
       <HireMePopupWrapper open={open}>
         <Helmet>
@@ -90,15 +91,26 @@ class HireMePopup extends React.Component {
             <img alt="Close popup" src={Close} />
           </Burger>
           <t.H3>Contact me on</t.H3>
-          <Link primary bold
+          <Link
+            primary
+            bold
             target="_blank"
-            href="https://www.linkedin.com/">
-            <img src={LN} alt="Your Linkedin profile" />
+            href="https://www.rocketpunch.com/@ssokwoo"
+          >
+            <img src={rocket} alt="Your Linkedin profile" />
+          </Link>
+          <Link
+            primary
+            bold
+            target="_blank"
+            href="https://www.instagram.com/ongdv94/"
+          >
+            <img src={insta} alt="Your Linkedin profile" />
           </Link>
         </ContentWrapper>
       </HireMePopupWrapper>
-    );
+    )
   }
 }
 
-export default HireMePopup;
+export default HireMePopup

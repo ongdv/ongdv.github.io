@@ -84,10 +84,16 @@ class AboutMe extends React.Component {
         <Layout theme="white" openContactPopup={this.openContactPopup}>
           <AboveFold>
             <t.H1 green align="center">
-              Name Surname - Lorem ipsum
+              오경우(OngDV)
             </t.H1>
-            <t.LargeP align="center" max70>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <t.LargeP align="left" max70>
+              개발과 사진에 애착을 가지는 개발자 오경우입니다. <br />
+              현재 웹개발을 주로 하고 있으며 프론트엔드와 백엔드 둘 다 좋아합니다. 프론트 엔드 개발을 좋아하지만, 시스템
+              요구사항이나 백엔드 개발을 활용하고, 프론트 엔드에 가중치를 두는 프로젝트를 선호합니다.
+              <br />
+              언제나 최신동향을 따라가려 노력하며, 스스로 배운 것을 주위 사람들에게 가르쳐주며 스터디하는 것을
+              좋아합니다. 아직 스스로에게 '개발자'라는 호칭을 쓰는 것은 모자라다고 판단합니다. 당신이 저를 개발자라는
+              호칭이 적합한지 알려주세요.
             </t.LargeP>
           </AboveFold>
           <Content>

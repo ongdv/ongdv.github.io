@@ -1,8 +1,8 @@
 {
-  "name": "portfolio-website-gatsby",
+  "name": "OngDV-Portfolio",
   "description": "Portfolio website built in Gatsby",
   "version": "1.0.0",
-  "author": "Milos Lekovic <milos085@gmail.com>",
+  "author": "OngDV(source by Milos Lekovic <milos085@gmail.com>)",
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
     "gatsby": "^2.0.40",
@@ -36,10 +36,13 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "start": "yarn develop",
     "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b master"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "prettier": "^1.15.1"
   },
   "repository": {
