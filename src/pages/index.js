@@ -137,6 +137,10 @@ class Homepage extends React.Component {
     });
   };
 
+  componentWillMount = () => {
+    console.log(this.props.data);
+  };
+
   render() {
     const { openHireMePopup } = this.state;
     const { data } = this.props;

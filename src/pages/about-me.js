@@ -97,7 +97,7 @@ class AboutMe extends React.Component {
             </t.LargeP>
           </AboveFold>
           <Content>
-            <Img fluid={data.avatarAbout.childImageSharp.fluid} alt="Name Surname" className="avatar" />
+            <Img fluid={data.avatarAbout.childImageSharp.fluid} alt="OngDV" className="avatar" />
           </Content>
         </Layout>
         <HireMePopup open={openHireMePopup} handleClose={this.handleRequestDemoClose} />
@@ -107,7 +107,6 @@ class AboutMe extends React.Component {
 }
 
 export default AboutMe;
-
 export const pageQuery = graphql`
   query {
     avatarAbout: file(relativePath: { eq: "avatar.jpg" }) {
