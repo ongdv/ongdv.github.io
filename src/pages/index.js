@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, graphql, navigateTo } from 'gatsby';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
+import Card from '../components/card';
 
 const IndexPage = (props) => {
   const { data, pathContext } = props;
@@ -12,28 +12,35 @@ const IndexPage = (props) => {
     allMarkdownRemark: { edges }
   } = data;
 
+  const handlePage = (path) => {
+    console.log(path);
+    navigateTo(path);
+  };
+
   const list = edges.map(({ node }, idx) => {
-    const { html } = node;
-    const { path, type } = node.frontmatter;
     // console.log(node);
-    return <div dangerouslySetInnerHTML={{ __html: html }} key={idx} onClick={() => navigateTo(`/${type}/${path}`)} />;
+    return <Card {...node.frontmatter} handleClickCard={handlePage} />;
   });
 
   return (
-    <Layout>
+    <div style={styles.container}>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      {list}
-      <pre>{JSON.stringify(pathContext)}</pre>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </div>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </Layout>
+      <Layout>{list}</Layout>
+    </div>
   );
+};
+
+const styles = {
+  container: {
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden'
+  },
+  body: {
+    width: '70%',
+    height: '80%',
+    margin: '0 auto'
+  }
 };
 
 export default IndexPage;
