@@ -1,59 +1,215 @@
 import React from 'react';
-import { Link, graphql, navigateTo } from 'gatsby';
+import styled from 'styled-components';
+import * as Mixins from '../Mixins';
+import * as t from '../Typography';
+import Layout, { Content } from '../components/Layout';
+import { HireMe } from '../components/Button.js';
+import HireMePopup from '../components/HireMePopup.js';
+import { media } from '../MediaQueries';
+import Colors from '../Colors';
+import Img from 'gatsby-image';
+import { graphql } from 'gatsby';
+import { darken } from 'polished';
+import RightCard from '../components/RightCard';
+import LeftCard from '../components/LeftCard';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import Card from '../components/card';
+const AboveFold = styled.div`
+  ${Mixins.aboveFoldMixin}
+  padding: 140px 0 60px 0;
+  ${t.H1} {
+    color: ${Colors.darkest};
+  }
+`;
 
-const IndexPage = (props) => {
-  const { data, pathContext } = props;
+const Block = styled.div`
+  &:nth-child(odd) {
+    border: solid 1px ${darken(0.1, Colors.light)};
+    background-color: ${Colors.light};
+  }
+`;
 
-  const {
-    allMarkdownRemark: { edges }
-  } = data;
+const BlockContent = styled(Content)`
+  ${Mixins.block}
+  padding: 100px 40px;
+  ${media.tablet`
+    flex-direction: column;
+    align-items: baseline;
+  `};
+  ${media.phone`
+    padding: 40px 10px;
+  `};
+  ${t.P} {
+    margin-top: 10px;
+  }
+  ${t.H2} {
+    margin-top: 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
 
-  const handlePage = (path) => {
-    console.log(path);
-    navigateTo(path);
+const DivWrapper = styled.div`
+  padding: 80px 30px;
+  ${media.tablet`padding: 50px 0;`}
+  &:first-child {
+    ${media.tablet`
+      margin-bottom: 40px;
+  `};
+  }
+`;
+
+const ItemImage = styled.img`
+  max-width: 85%;
+  position: relative;
+  ${media.tablet`max-width: none;`}
+`;
+
+const HomepageWrapper = styled.div`
+  ${Mixins.wrapper}
+  .who-desc {
+    display: block;
+    margin: 0 auto 60px auto;
+    max-width: 90%;
+  }
+  ${t.LargeP} {
+    margin-bottom: 28px;
+  }
+  ${t.H1} {
+    margin: 0 0 20px 0;
+  }
+  .avatar {
+    max-width: 200px;
+    width: 80%;
+    margin: 0 auto 50px auto;
+    border-radius: 50%;
+    display: block;
+    ${media.tablet`max-width: 70%;`}
+  }
+  .link {
+    padding: 0;
+    color: ${Colors.darkest};
+    text-decoration: underlined;
+    svg {
+      margin-left: 7px;
+    }
+  }
+  .portfolio {
+    margin: 100px 0 50px 0;
+    font-size: 42px;
+  }
+`;
+
+const WorkWithMe = styled.div`
+  padding: 80px;
+  width: 73%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px 0 rgba(57, 55, 55, 0.08);
+  background-color: #ffffff;
+  text-align: center;
+  position: relative;
+  margin: 100px auto -150px auto;
+  ${t.LargeP} {
+    max-width: 80%;
+    margin: 0 auto 28px auto;
+  }
+  ${media.tablet`
+    width: auto;
+    padding: 40px;
+    margin: 50px 30px -100px 30px;
+  `};
+`;
+
+class Homepage extends React.Component {
+  state = {
+    openHireMePopup: false
   };
 
-  const list = edges.map(({ node }, idx) => {
-    // console.log(node);
-    return <Card {...node.frontmatter} handleClickCard={handlePage} />;
-  });
+  handleRequestDemoClose = () => {
+    this.setState({
+      openHireMePopup: false
+    });
+  };
 
-  return (
-    <div style={styles.container}>
-      <SEO title="Home" />
-      <Layout>{list}</Layout>
-    </div>
-  );
-};
+  openContactPopup = () => {
+    this.setState({
+      openHireMePopup: true
+    });
+  };
 
-const styles = {
-  container: {
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden'
-  },
-  body: {
-    width: '70%',
-    height: '80%',
-    margin: '0 auto'
+  componentWillMount = () => {
+    console.log(this.props.data);
+  };
+
+  render() {
+    const { openHireMePopup } = this.state;
+    const { data } = this.props;
+    const { avatarHomepage, portfolio } = data;
+    const { edges } = portfolio;
+    const list = edges.map((item, idx) => {
+      return idx % 2 === 0 ? <LeftCard {...item} /> : <RightCard {...item} />;
+    });
+
+    return (
+      <HomepageWrapper>
+        <Layout theme="white" bigFooter openContactPopup={this.openContactPopup}>
+          <AboveFold>
+            <Img fluid={avatarHomepage.childImageSharp.fluid} alt="OngDV" className="avatar" />
+            <t.H1 primary align="center">
+              오경우(
+              <a target="_blank" href="https://github.com/ongdv">
+                ongdv
+              </a>
+              )
+            </t.H1>
+
+            <t.H2 primary align="center" bold>
+              사진과 코딩을 사랑하는 개발자.
+            </t.H2>
+            <t.P align="center" max70 className="who-desc">
+              언제나 최신동향을 따라가려 노력하며, 스스로 배운 것을 주위 사람들에게 가르쳐주며 스터디하는 것을
+              좋아합니다. <br />
+              아직 스스로에게 '개발자'라는 호칭을 쓰는 것은 모자라다고 판단합니다. 당신이 저를 개발자라는 호칭이
+              적합한지 알려주세요.
+            </t.P>
+          </AboveFold>
+          <t.H2 primary align="center" bold>
+            Projects
+          </t.H2>
+          {list}
+          <WorkWithMe>
+            <t.H1 green>Contact</t.H1>
+            <t.LargeP>If you contact me?</t.LargeP>
+            <HireMe onClick={this.openContactPopup} book>
+              Contact me
+            </HireMe>
+          </WorkWithMe>
+        </Layout>
+        <HireMePopup open={openHireMePopup} handleClose={this.handleRequestDemoClose} />
+      </HomepageWrapper>
+    );
   }
-};
+}
 
-export default IndexPage;
+export default Homepage;
+
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark {
+    avatarHomepage: file(relativePath: { eq: "avatar.jpg" }) {
+      ...fluidImage
+    }
+    portfolio: allMarkdownRemark {
       edges {
         node {
           html
           frontmatter {
+            id
             title
-            path
-            type
+            description
+            rate
+            language
+            repo
           }
         }
       }

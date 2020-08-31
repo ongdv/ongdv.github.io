@@ -16,8 +16,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node {
             html
             frontmatter {
+              id
               title
-              path
+              description
+              rate
+              language
+              repo
             }
           }
         }
@@ -29,23 +33,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     throw errors;
   }
   data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const { html, frontmatter } = node;
+    const { id, title, description, rate, language, repo } = frontmatter;
     createPage({
-      path: `/post/${String(node.frontmatter.path)}`,
+      path: `/portfolio/${String(id)}`,
       context: {
-        html: node.html,
-        title: node.frontmatter.title
+        id: id,
+        html: html,
+        title: title,
+        description: description,
+        rate: rate,
+        language: language,
+        repo: repo
       },
-      component: path.resolve(`./src/pages/post.js`)
-    });
-  });
-
-  data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: `/ddd/${String(node.frontmatter.path)}`,
-      context: {
-        html: node.html
-      },
-      component: path.resolve(`./src/pages/ddd.js`)
+      component: path.resolve(`./src/pages/portfolio.js`)
     });
   });
 };
