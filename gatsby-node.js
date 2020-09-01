@@ -6,10 +6,10 @@
 
 // You can delete this file if you're not using it
 const path = require('path');
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const { data, errors } = await graphql(`
+  const request = await graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -29,12 +29,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
+  const { data, errors } = request;
+  console.log(JSON.stringify(data, null, 4));
   if (errors) {
+    console.log('Error Throwing');
     throw errors;
   }
-  data.allMarkdownRemark.edges.forEach(({ node }) => {
+  data.allMarkdownRemark.edges.map(({ node }) => {
     const { html, frontmatter } = node;
     const { id, title, description, rate, language, repo } = frontmatter;
+    console.log(JSON.stringify(node, null, 4));
     createPage({
       path: `/portfolio/${String(id)}`,
       context: {
@@ -46,7 +50,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         language: language,
         repo: repo
       },
-      component: path.resolve(`./src/pages/portfolio.js`)
+      component: path.resolve(`src/pages/portfolio.js`)
     });
   });
 };

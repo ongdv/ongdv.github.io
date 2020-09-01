@@ -7,7 +7,6 @@ import HireMePopup from '../components/HireMePopup.js';
 import { media } from '../MediaQueries';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
-import { HireMe } from '../components/Button';
 
 const AboveFold = styled.div`
   ${Mixins.aboveFoldMixin}

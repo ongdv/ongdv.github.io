@@ -55,7 +55,7 @@ const ItemImage = styled.img`
 
 const LeftCard = props => {
   const { node } = props;
-  const { frontmatter, html } = node;
+  const { frontmatter } = node;
   const { id, title, description, rate, language } = frontmatter;
   return (
     <Block>

@@ -84,7 +84,7 @@ class HireMePopup extends React.Component {
           <body style={{ overflow: overflow }} />
         </Helmet>
         <ContentWrapper>
-          <Burger onClick={this.closePopup}>
+          <Burger onClick={e => this.closePopup(e)}>
             <img alt="Close popup" src={Close} />
           </Burger>
           <t.H3>Contact me on</t.H3>

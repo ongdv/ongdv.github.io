@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import * as Mixins from '../Mixins';
 import * as t from '../Typography';
-import Layout, { Content } from '../components/Layout';
+import Layout from '../components/Layout';
 import { HireMe } from '../components/Button.js';
 import HireMePopup from '../components/HireMePopup.js';
 import { media } from '../MediaQueries';
 import Colors from '../Colors';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
-import { darken } from 'polished';
 import RightCard from '../components/RightCard';
 import LeftCard from '../components/LeftCard';
 
@@ -19,51 +18,6 @@ const AboveFold = styled.div`
   ${t.H1} {
     color: ${Colors.darkest};
   }
-`;
-
-const Block = styled.div`
-  &:nth-child(odd) {
-    border: solid 1px ${darken(0.1, Colors.light)};
-    background-color: ${Colors.light};
-  }
-`;
-
-const BlockContent = styled(Content)`
-  ${Mixins.block}
-  padding: 100px 40px;
-  ${media.tablet`
-    flex-direction: column;
-    align-items: baseline;
-  `};
-  ${media.phone`
-    padding: 40px 10px;
-  `};
-  ${t.P} {
-    margin-top: 10px;
-  }
-  ${t.H2} {
-    margin-top: 0;
-  }
-  img {
-    width: 100%;
-    height: auto;
-  }
-`;
-
-const DivWrapper = styled.div`
-  padding: 80px 30px;
-  ${media.tablet`padding: 50px 0;`}
-  &:first-child {
-    ${media.tablet`
-      margin-bottom: 40px;
-  `};
-  }
-`;
-
-const ItemImage = styled.img`
-  max-width: 85%;
-  position: relative;
-  ${media.tablet`max-width: none;`}
 `;
 
 const HomepageWrapper = styled.div`
@@ -138,17 +92,13 @@ class Homepage extends React.Component {
     });
   };
 
-  componentWillMount = () => {
-    console.log(this.props.data);
-  };
-
   render() {
     const { openHireMePopup } = this.state;
     const { data } = this.props;
     const { avatarHomepage, portfolio } = data;
     const { edges } = portfolio;
     const list = edges.map((item, idx) => {
-      return idx % 2 === 0 ? <LeftCard {...item} /> : <RightCard {...item} />;
+      return idx % 2 === 0 ? <LeftCard key={idx} {...item} /> : <RightCard key={idx} {...item} />;
     });
 
     return (
