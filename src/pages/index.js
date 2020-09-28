@@ -124,10 +124,10 @@ class Homepage extends React.Component {
               적합한지 알려주세요.
             </t.P>
           </AboveFold>
-          <t.H2 primary align="center" bold>
+          {/* <t.H2 primary align="center" bold>
             Projects
-          </t.H2>
-          {list}
+          </t.H2> */}
+          {/* {list} */}
           <WorkWithMe>
             <t.H1 green>Contact</t.H1>
             <t.LargeP>If you contact me?</t.LargeP>
