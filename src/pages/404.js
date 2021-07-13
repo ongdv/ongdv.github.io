@@ -1,60 +1,43 @@
 import React from 'react';
-import styled from 'styled-components';
-import * as Mixins from '../Mixins';
-import * as t from '../Typography';
-import Layout from '../components/Layout';
-import HireMePopup from '../components/HireMePopup.js';
+import { Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { Container } from 'react-bootstrap';
+import Fade from 'react-reveal/Fade';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const AboveFold = styled.div`
-  ${Mixins.aboveFoldMixin}
-  padding: 157px 0 100px 0;
-`;
+import { headData } from '../mock/data';
+import '../style/main.scss';
 
-const NotFoundPageWrapper = styled.div`
-  ${Mixins.wrapper}
-  .m-b-60 {
-    margin-bottom: 60px;
-  }
-  ${t.H1} {
-    margin: 0 0 20px 0;
-  }
-`;
+export default () => {
+  const { lang } = headData;
 
-class NotFoundPage extends React.Component {
-  state = {
-    openHireMePopup: false
-  };
-
-  closeContactPopup = () => {
-    this.setState({
-      openHireMePopup: false
-    });
-  };
-
-  openContactPopup = () => {
-    this.setState({
-      openHireMePopup: true
-    });
-  };
-
-  render() {
-    const { openHireMePopup } = this.state;
-    return (
-      <NotFoundPageWrapper>
-        <Layout theme="white" openContactPopup={this.openContactPopup}>
-          <AboveFold>
-            <t.H1 green align="center">
-              404
-            </t.H1>
-            <t.H3 align="center" max45>
-              Not found
-            </t.H3>
-          </AboveFold>
-        </Layout>
-        <HireMePopup open={openHireMePopup} handleClose={this.closeContactPopup} />
-      </NotFoundPageWrapper>
-    );
-  }
-}
-
-export default NotFoundPage;
+  return (
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Page not found</title>
+        <html lang={lang || 'en'} />
+        <meta name="description" content="Page not found" />
+      </Helmet>
+      <section id="hero" className="jumbotron">
+        <Container>
+          <Fade bottom duration={1000} delay={500} distance="30px">
+            <h1 className="hero-title text-center">
+              Sorry, this path does not exist{' '}
+              <span role="img" aria-label="emoji">
+                😞
+              </span>
+            </h1>
+          </Fade>
+          <Fade bottom duration={1000} delay={1000} distance="30px">
+            <p className="hero-cta justify-content-center">
+              <Link className="cta-btn cta-btn--hero" to="/">
+                Go back
+              </Link>
+            </p>
+          </Fade>
+        </Container>
+      </section>
+    </>
+  );
+};

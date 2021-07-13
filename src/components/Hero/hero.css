@@ -1,0 +1,29 @@
+.typewriter {
+  max-width: max-content;
+  padding: 1.5rem 0;
+  color: #00cdac;
+  border-right: solid 3px #00cdac;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 5rem;
+}
+
+/* Animation */
+.typewriter {
+  animation: animated-text 4s steps(40,end) 1s 1 normal both,
+             animated-cursor 800ms steps(29,end) infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 100%;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color: #00cdac;}
+  to{border-right-color: transparent;}
+}
