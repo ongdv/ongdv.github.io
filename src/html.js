@@ -19,7 +19,14 @@ export default function HTML({
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta property="og:keywords" content="오경우, OngDV, 동서대학교, 컴퓨터공학, 웹 개발자, 코드브루잉, Codebrewing, codebrewing, 디앤커머스, 디엔커머스, DN COMMERCE, DN커머스, 웹사이트, 웹디자인"></meta>
+        <meta
+          name="google-site-verification"
+          content="a6q-EA651yBTyfHUYm6ZO9Hi6Sv8edvy8ol0APzOf6U"
+        />
+        <meta
+          property="og:keywords"
+          content="오경우, OngDV, 동서대학교, 컴퓨터공학, 웹 개발자, 코드브루잉, Codebrewing, codebrewing, 디앤커머스, 디엔커머스, DN COMMERCE, DN커머스, 웹사이트, 웹디자인"
+        />
         {headComponents}
       </head>
       <body {...bodyAttributes}>
